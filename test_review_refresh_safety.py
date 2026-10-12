@@ -2,6 +2,7 @@ import io
 import subprocess
 import unittest
 from datetime import date, datetime, timezone
+from pathlib import Path
 from unittest.mock import Mock, patch
 import market_data
 import refresh_pipeline as pipeline
@@ -23,7 +24,9 @@ class ReviewSafetyTest(unittest.TestCase):
         child=Mock(pid=12345)
         child.wait.side_effect=[subprocess.TimeoutExpired('fixture',900),0]
         child.poll.return_value=0
-        with patch.object(pipeline.subprocess,'Popen',return_value=child), patch.object(pipeline.subprocess,'run',return_value=Mock(returncode=0)) as cleanup, patch.object(pipeline.os,'name','nt'):
+        # Keep the host path class when simulating Windows on a POSIX test host.
+        path_class = type(Path())
+        with patch.object(pipeline.subprocess,'Popen',return_value=child), patch.object(pipeline.subprocess,'run',return_value=Mock(returncode=0)) as cleanup, patch.object(pipeline, 'Path', path_class), patch.object(pipeline.os,'name','nt'):
             with self.assertRaises(pipeline.RefreshFailed):pipeline._run('fixture',['never-run'],io.StringIO())
         self.assertEqual(child.wait.call_args_list[0].kwargs,{'timeout':900})
         self.assertEqual(cleanup.call_args.args[0][-4:],['/PID','12345','/T','/F'])

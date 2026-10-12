@@ -21,6 +21,8 @@
 
 ## 설치와 오프라인 확인
 
+Apple Silicon M1 Mac에서는 [macOS 설치·검증 안내](docs/MACOS.md)를 먼저 읽으세요. Python 연구 코드와 로컬 웹 화면의 준비 절차, Windows 전용 통합 갱신기의 제한을 구분해 설명합니다.
+
 Python **3.12 이상**이 필요합니다. 일부 연구 모듈은 Python 3.12 f-string 문법을 사용합니다. Windows PowerShell에서:
 
 ```powershell

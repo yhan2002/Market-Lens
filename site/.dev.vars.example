@@ -1,0 +1,6 @@
+# Blank values keep protected routes disabled.
+VIEW_TOKEN=
+UPLOAD_TOKEN=
+NEWS_AUTH=
+NEWS_SESSION_KEY=
+NEWS_UPLOAD_TOKEN=

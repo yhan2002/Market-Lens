@@ -1,0 +1,1 @@
+ALTER TABLE `roro_shadow_snapshots` ADD `benchmark_close` real;

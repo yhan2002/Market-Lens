@@ -1,0 +1,19 @@
+{
+  "schema_version": 2,
+  "notice": "Registry approval does not mutate live model code.",
+  "roles": {
+    "CURRENT_REGIME": {
+      "active_model_id": null,
+      "rollback_model_ids": []
+    },
+    "Q20": {
+      "active_model_id": null,
+      "rollback_model_ids": []
+    },
+    "POLICY": {
+      "active_model_id": null,
+      "rollback_model_ids": []
+    }
+  },
+  "models": {}
+}
